@@ -1,0 +1,86 @@
+  GNU nano 6.3                                                                                                                                                                                                       prova.c                                                                                                                                                                                                                 
+#include <stdio.h>
+
+int main () {
+
+            char nuova = {'\0'};
+            int risposta;
+            int score = 0;
+            int continua_gioco =1;
+
+            printf("Benvenuto nel magico gioco - Scegli con attenzione le rispste per guadagnare punti e vinvere \nScegli se iniziare una nuova partita digitando a\nEsci dal Gioco digitando b\n");
+            scanf("%c", &nuova);
+
+
+do{
+
+          char nomeutente [30];
+
+
+          if (nuova == 'a' || nuova== 'A'){
+
+               printf("INSERISCI IL TUO NOME UTENTE\n");
+               fgets(nomeutente, 30, stdin);
+
+
+               printf("+++++++++SI COMINCIA+++++++++\n");
+               printf("DOMANDA NUMERO 1\n");
+               printf("\n");
+                
+                do{
+                   printf("Di che colore era il cavallo bianco di Napoleone ?\n");
+                   printf(" 1) Verde\n 2) Bianco\n 3) Giallo Limone\n");
+                   scanf("d", &risposta);
+                   if (risposta = 2) {
+                        printf("Risposta Corretta, Complimenti !\n");
+                        score++;
+                               }
+                      else if (risposta == 2 || risposta == 3) {
+                              printf("Risposta Sbagliata !\n");
+                              }
+                      else {
+                           printf("Inserisci solo il numero della risposta, Grazie !\n");
+                                }
+                   }
+                    while (risposta < 1 || risposta > 3);
+
+
+                   printf("DOMANDA NUMERO 2\n");
+                   printf("\n");
+
+                do{
+                   printf("Di che colore è la maglia della roma ?\n");
+                   printf(" 1) Giallo Rossa\n 2) Bianco Azzurra\n 3) Giallo Limone\n");
+                   scanf("%d", &risposta);
+                   if (risposta = 1) {
+                        printf("Risposta Corretta, Complimenti !\n");
+                        score++;
+                        printf("Il tu punteggio è stato di %d", score);
+                               }
+                      else if (risposta == 1 || risposta == 3) {
+                              printf("Risposta Sbagliata !\n");
+                              printf("Il tu punteggio è stato di %d", score);
+                              }
+                      else {
+                           printf("Inserisci solo il numero della risposta, Grazie !\n");
+                                }
+                   }
+                    while (risposta < 1 || risposta > 3);
+
+        continua_gioco = 1;
+        score = 0;
+}
+else if (nuova == 'n' || nuova == 'N') {
+        printf("Alla prossima !\n");
+        continua_gioco = 0;
+        }
+                else {
+                     printf("OPS sembra ci sia stato un problema\n Rispondi con A se vuoi rigiocare oppure con B se vuoi uscire\n");
+}
+}
+while(continua_gioco ==1);
+return 0;
+}
+
+
+
