@@ -1,0 +1,90 @@
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          
+#include <stdio.h>
+
+int main () {
+
+            char nuova;
+            int risposta = 0;
+            int score = 0;
+            int continua_gioco =1;
+            int ceck; // questo l'ho inserito per poter far restituire 1 durante l'imput di una lettera.
+
+            
+            printf("Benvenuto nel magico gioco - Scegli con attenzione le rispste per guadagnare punti e vinvere \n");
+            
+
+
+do{
+          printf("\nScegli se iniziare una nuova partita digitando a\nEsci dal Gioco digitando b\n"); 
+		  scanf("%c", &nuova);
+		  
+		           char nomeutente [30];
+
+
+          if (nuova == 'a' || nuova== 'A'){
+
+               printf("INSERISCI IL TUO NOME UTENTE\n");
+               rewind(stdin);
+			   fgets(nomeutente, 30, stdin); //non sapevo come poter dare messaggio di errore con troppi caratteri. Ho risolto con fgets che limita ad un tot
+               printf("\nBenvenuto %s\n", nomeutente);
+
+               printf("+++++++++SI COMINCIA+++++++++\n");
+               printf("DOMANDA NUMERO 1\n");
+               printf("\n");
+                
+                do{
+                   printf("Di che colore era il cavallo bianco di Napoleone ?\n");
+                   printf(" 1) Verde\n 2) Bianco\n 3) Giallo Limone\n");
+                   rewind(stdin); //il ciclo continuava all'infinito cosi pulendo con rewind si è bloccato
+                   ceck = scanf("%d", &risposta); // qui è stato messo perchè scanf restituisce 0 o 1 cosi qualsiasi sia il valore non dava problemi ache se si risponde con una lettra
+                   if (risposta == 2) {
+                        printf("Risposta Corretta, Complimenti ! %s\n", nomeutente);
+                        score++;
+                               }
+                      else if (risposta == 1 || risposta == 3) {
+                              printf("Risposta Sbagliata ! %s\n", nomeutente);
+                              }
+                      else {
+                           printf("Inserisci solo il numero della risposta, Grazie ! %s\n", nomeutente);
+                              }
+                   }
+                    while (risposta < 1 || risposta > 3 || ceck == 0); // ceck inserito perchè altrimenti il while non partiva, ceck sta a 0 perchè se si inserisce una risposta negativa scanf restituirebbe 0
+
+
+                   printf("\nDOMANDA NUMERO 2\n");
+                   printf("\n");
+
+                   do{
+                   printf("Di che colore è la maglia della roma ?\n");
+                   printf(" 1) Giallo Rossa\n 2) Bianco Azzurra\n 3) Giallo Limone\n");
+                   rewind(stdin);
+                   ceck = scanf("%d", &risposta);
+                   if (risposta == 1) {
+                        printf("Risposta Corretta, Complimenti ! %s\n", nomeutente);
+                        score++;
+                        printf("Il tu punteggio è stato di %d", score);
+                               }
+                      else if (risposta == 1 || risposta == 3) {
+                              printf("Risposta Sbagliata ! %s\n", nomeutente);
+                              printf("Il tu punteggio è stato di %d\n", score);
+                              }
+                      else {
+                           printf("Inserisci solo il numero della risposta, Grazie !%s\n", nomeutente);
+                                }
+                   }
+                    while (risposta < 1 || risposta > 3 || ceck == 0);
+
+        continua_gioco = 1; 
+        score = 0;
+}
+else if (nuova == 'b' || nuova == 'b') {
+        printf("Alla prossima  !%s\n", nomeutente);
+        continua_gioco = 0; // così riesce ad uscire dal gioco
+        }
+                else {
+                     printf("OPS sembra ci sia stato un problema\n\n");                   
+}
+}
+while(continua_gioco ==1); //il while del grande do iniziale che fa ricominciare il ciclo
+return 0;
+}
